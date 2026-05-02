@@ -1,48 +1,60 @@
 # National Institute of Standards and Technology (national-institute-of-standards-and-technology)
-NIST promotes U.S. innovation and industrial competitiveness by advancing
-measurement science, standards, and technology in ways that enhance economic
-security and improve our quality of life.
 
-**URL:** [Visit APIs.json URL](
-https://raw.githubusercontent.com/api-evangelist/national-institute-of-standards-and-technology/refs/heads/main/apis.yml)
+NIST promotes U.S. innovation and industrial competitiveness by advancing measurement science, standards, and technology in ways that enhance economic security and improve our quality of life. NIST operates the National Vulnerability Database (NVD), which exposes public APIs for CVE, CVE change history, and CPE records.
+
+**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/national-institute-of-standards-and-technology/refs/heads/main/apis.yml)
 
 ## Scope
 
-- **Type:** Contract 
-- **Position:** Consuming 
-- **Access:** 3rd-Party 
+- **Type:** Contract
+- **Position:** Consuming
+- **Access:** 3rd-Party
 
-## Tags:
+## Tags
 
- - Federal Government, Standards
+- Cybersecurity
+- Federal Government
+- Standards
+- Technology
+- Vulnerabilities
 
 ## Timestamps
 
-- **Created:** 2024-12-03 
-- **Modified:** 2025-01-02 
+- **Created:** 2024-12-03
+- **Modified:** 2026-04-28
 
 ## APIs
 
-### National Institute of Standards and Technology
+### NIST National Vulnerability Database (NVD) API
 
-NIST promotes U.S. innovation and industrial competitiveness by advancing
-measurement science, standards, and technology in ways that enhance
-economic security and improve our quality of life.
+The NVD API provides programmatic access to Common Vulnerabilities and Exposures (CVE) records, CVE change history, and Common Platform Enumeration (CPE) records. Endpoints support pagination, filtering by CVSS metrics, CWE IDs, KEV catalog membership, source identifiers, and publication or modification date ranges.
 
-**Human URL:** [https://www.nist.gov](https://www.nist.gov)
+**Human URL:** [https://nvd.nist.gov/developers](https://nvd.nist.gov/developers)
 
+**Base URL:** `https://services.nvd.nist.gov`
 
-#### Tags:
+#### Tags
 
- - API
+- CVE
+- CPE
+- Cybersecurity
+- Vulnerabilities
 
 #### Properties
 
-- [Documentation](https://www.nist.gov)
+- [Documentation](https://nvd.nist.gov/developers)
+- [Vulnerabilities Documentation](https://nvd.nist.gov/developers/vulnerabilities)
+- [Products Documentation](https://nvd.nist.gov/developers/products)
+- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/national-institute-of-standards-and-technology/main/openapi/national-institute-of-standards-and-technology-openapi.yml)
+
+## Common
+
+- [Website](https://www.nist.gov/)
+- [Portal](https://nvd.nist.gov/developers)
+- [Documentation](https://nvd.nist.gov/developers/vulnerabilities)
 
 ## Maintainers
 
 **FN:** Kin Lane
 
-**Email:** info@apievangelist.com
-
+**Email:** kin@apievangelist.com
