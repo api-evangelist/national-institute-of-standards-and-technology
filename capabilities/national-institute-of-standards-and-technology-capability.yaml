@@ -1,0 +1,482 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: NIST National Vulnerability Database (NVD) API
+  description: The National Vulnerability Database (NVD) API, operated by the National Institute of Standards and Technology,
+    provides programmatic access to Common Vulnerabilities and Exposures (CVE) records, CVE change history, and Common Platform
+    Enumeration (CPE) records. The API supports pagination, filtering, and date-range queries for vulnerability and product
+    data.
+  tags:
+  - National
+  - Institute
+  - Of
+  - Standards
+  - And
+  - Technology
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: national-institute-of-standards-and-technology
+    baseUri: https://services.nvd.nist.gov
+    description: NIST National Vulnerability Database (NVD) API HTTP API.
+    resources:
+    - name: rest-json-cves-2-0
+      path: /rest/json/cves/2.0
+      operations:
+      - name: getcves
+        method: GET
+        description: Search CVE records
+        inputParameters:
+        - name: cpeName
+          in: query
+          type: string
+          description: Filter by specific CPE name.
+        - name: cveId
+          in: query
+          type: string
+          description: Retrieve a specific CVE by its identifier.
+        - name: cveTag
+          in: query
+          type: string
+          description: Filter by CVE tag (disputed, unsupported-when-assigned, exclusively-hosted-service).
+        - name: cvssV2Metrics
+          in: query
+          type: string
+        - name: cvssV2Severity
+          in: query
+          type: string
+        - name: cvssV3Metrics
+          in: query
+          type: string
+        - name: cvssV3Severity
+          in: query
+          type: string
+        - name: cvssV4Metrics
+          in: query
+          type: string
+        - name: cvssV4Severity
+          in: query
+          type: string
+        - name: cweId
+          in: query
+          type: string
+          description: Filter by Common Weakness Enumeration identifier.
+        - name: hasCertAlerts
+          in: query
+          type: boolean
+        - name: hasCertNotes
+          in: query
+          type: boolean
+        - name: hasKev
+          in: query
+          type: boolean
+        - name: hasOval
+          in: query
+          type: boolean
+        - name: isVulnerable
+          in: query
+          type: boolean
+        - name: kevStartDate
+          in: query
+          type: string
+        - name: kevEndDate
+          in: query
+          type: string
+        - name: keywordSearch
+          in: query
+          type: string
+          description: Search description text for keywords.
+        - name: keywordExactMatch
+          in: query
+          type: boolean
+        - name: lastModStartDate
+          in: query
+          type: string
+          description: Last modified start date (max 120-day range).
+        - name: lastModEndDate
+          in: query
+          type: string
+        - name: pubStartDate
+          in: query
+          type: string
+          description: Published start date (max 120-day range).
+        - name: pubEndDate
+          in: query
+          type: string
+        - name: resultsPerPage
+          in: query
+          type: integer
+          description: Maximum results per page (max 2000).
+        - name: startIndex
+          in: query
+          type: integer
+          description: Zero-based pagination offset.
+        - name: sourceIdentifier
+          in: query
+          type: string
+        - name: virtualMatchString
+          in: query
+          type: string
+        - name: versionStart
+          in: query
+          type: string
+        - name: versionStartType
+          in: query
+          type: string
+        - name: versionEnd
+          in: query
+          type: string
+        - name: versionEndType
+          in: query
+          type: string
+        - name: noRejected
+          in: query
+          type: boolean
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: rest-json-cvehistory-2-0
+      path: /rest/json/cvehistory/2.0
+      operations:
+      - name: getcvehistory
+        method: GET
+        description: Retrieve CVE change history
+        inputParameters:
+        - name: changeStartDate
+          in: query
+          type: string
+          description: Change event start date (max 120-day range).
+        - name: changeEndDate
+          in: query
+          type: string
+        - name: cveId
+          in: query
+          type: string
+        - name: eventName
+          in: query
+          type: string
+          description: Filter by event type such as CVE Received, Initial Analysis, Reanalysis, CVE Modified, Modified Analysis,
+            CVE Translated, Vendor Comment, CVE Source Update, CPE
+        - name: resultsPerPage
+          in: query
+          type: integer
+          description: Maximum results per page (max 5000).
+        - name: startIndex
+          in: query
+          type: integer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: rest-json-cpes-2-0
+      path: /rest/json/cpes/2.0
+      operations:
+      - name: getcpes
+        method: GET
+        description: Search CPE records
+        inputParameters:
+        - name: cpeNameId
+          in: query
+          type: string
+          description: Specific CPE record UUID.
+        - name: cpeMatchString
+          in: query
+          type: string
+        - name: keywordSearch
+          in: query
+          type: string
+        - name: keywordExactMatch
+          in: query
+          type: boolean
+        - name: lastModStartDate
+          in: query
+          type: string
+        - name: lastModEndDate
+          in: query
+          type: string
+        - name: matchCriteriaId
+          in: query
+          type: string
+        - name: resultsPerPage
+          in: query
+          type: integer
+          description: Maximum results per page (default and max 10000).
+        - name: startIndex
+          in: query
+          type: integer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: national-institute-of-standards-and-technology-rest
+    description: REST adapter for NIST National Vulnerability Database (NVD) API.
+    resources:
+    - path: /rest/json/cves/2.0
+      name: getcves
+      operations:
+      - method: GET
+        name: getcves
+        description: Search CVE records
+        call: national-institute-of-standards-and-technology.getcves
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /rest/json/cvehistory/2.0
+      name: getcvehistory
+      operations:
+      - method: GET
+        name: getcvehistory
+        description: Retrieve CVE change history
+        call: national-institute-of-standards-and-technology.getcvehistory
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /rest/json/cpes/2.0
+      name: getcpes
+      operations:
+      - method: GET
+        name: getcpes
+        description: Search CPE records
+        call: national-institute-of-standards-and-technology.getcpes
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: national-institute-of-standards-and-technology-mcp
+    transport: http
+    description: MCP adapter for NIST National Vulnerability Database (NVD) API for AI agent use.
+    tools:
+    - name: getcves
+      description: Search CVE records
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: national-institute-of-standards-and-technology.getcves
+      with:
+        cpeName: tools.cpeName
+        cveId: tools.cveId
+        cveTag: tools.cveTag
+        cvssV2Metrics: tools.cvssV2Metrics
+        cvssV2Severity: tools.cvssV2Severity
+        cvssV3Metrics: tools.cvssV3Metrics
+        cvssV3Severity: tools.cvssV3Severity
+        cvssV4Metrics: tools.cvssV4Metrics
+        cvssV4Severity: tools.cvssV4Severity
+        cweId: tools.cweId
+        hasCertAlerts: tools.hasCertAlerts
+        hasCertNotes: tools.hasCertNotes
+        hasKev: tools.hasKev
+        hasOval: tools.hasOval
+        isVulnerable: tools.isVulnerable
+        kevStartDate: tools.kevStartDate
+        kevEndDate: tools.kevEndDate
+        keywordSearch: tools.keywordSearch
+        keywordExactMatch: tools.keywordExactMatch
+        lastModStartDate: tools.lastModStartDate
+        lastModEndDate: tools.lastModEndDate
+        pubStartDate: tools.pubStartDate
+        pubEndDate: tools.pubEndDate
+        resultsPerPage: tools.resultsPerPage
+        startIndex: tools.startIndex
+        sourceIdentifier: tools.sourceIdentifier
+        virtualMatchString: tools.virtualMatchString
+        versionStart: tools.versionStart
+        versionStartType: tools.versionStartType
+        versionEnd: tools.versionEnd
+        versionEndType: tools.versionEndType
+        noRejected: tools.noRejected
+      inputParameters:
+      - name: cpeName
+        type: string
+        description: Filter by specific CPE name.
+      - name: cveId
+        type: string
+        description: Retrieve a specific CVE by its identifier.
+      - name: cveTag
+        type: string
+        description: Filter by CVE tag (disputed, unsupported-when-assigned, exclusively-hosted-service).
+      - name: cvssV2Metrics
+        type: string
+        description: cvssV2Metrics
+      - name: cvssV2Severity
+        type: string
+        description: cvssV2Severity
+      - name: cvssV3Metrics
+        type: string
+        description: cvssV3Metrics
+      - name: cvssV3Severity
+        type: string
+        description: cvssV3Severity
+      - name: cvssV4Metrics
+        type: string
+        description: cvssV4Metrics
+      - name: cvssV4Severity
+        type: string
+        description: cvssV4Severity
+      - name: cweId
+        type: string
+        description: Filter by Common Weakness Enumeration identifier.
+      - name: hasCertAlerts
+        type: boolean
+        description: hasCertAlerts
+      - name: hasCertNotes
+        type: boolean
+        description: hasCertNotes
+      - name: hasKev
+        type: boolean
+        description: hasKev
+      - name: hasOval
+        type: boolean
+        description: hasOval
+      - name: isVulnerable
+        type: boolean
+        description: isVulnerable
+      - name: kevStartDate
+        type: string
+        description: kevStartDate
+      - name: kevEndDate
+        type: string
+        description: kevEndDate
+      - name: keywordSearch
+        type: string
+        description: Search description text for keywords.
+      - name: keywordExactMatch
+        type: boolean
+        description: keywordExactMatch
+      - name: lastModStartDate
+        type: string
+        description: Last modified start date (max 120-day range).
+      - name: lastModEndDate
+        type: string
+        description: lastModEndDate
+      - name: pubStartDate
+        type: string
+        description: Published start date (max 120-day range).
+      - name: pubEndDate
+        type: string
+        description: pubEndDate
+      - name: resultsPerPage
+        type: integer
+        description: Maximum results per page (max 2000).
+      - name: startIndex
+        type: integer
+        description: Zero-based pagination offset.
+      - name: sourceIdentifier
+        type: string
+        description: sourceIdentifier
+      - name: virtualMatchString
+        type: string
+        description: virtualMatchString
+      - name: versionStart
+        type: string
+        description: versionStart
+      - name: versionStartType
+        type: string
+        description: versionStartType
+      - name: versionEnd
+        type: string
+        description: versionEnd
+      - name: versionEndType
+        type: string
+        description: versionEndType
+      - name: noRejected
+        type: boolean
+        description: noRejected
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getcvehistory
+      description: Retrieve CVE change history
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: national-institute-of-standards-and-technology.getcvehistory
+      with:
+        changeStartDate: tools.changeStartDate
+        changeEndDate: tools.changeEndDate
+        cveId: tools.cveId
+        eventName: tools.eventName
+        resultsPerPage: tools.resultsPerPage
+        startIndex: tools.startIndex
+      inputParameters:
+      - name: changeStartDate
+        type: string
+        description: Change event start date (max 120-day range).
+      - name: changeEndDate
+        type: string
+        description: changeEndDate
+      - name: cveId
+        type: string
+        description: cveId
+      - name: eventName
+        type: string
+        description: Filter by event type such as CVE Received, Initial Analysis, Reanalysis, CVE Modified, Modified Analysis,
+          CVE Translated, Vendor Comment, CVE Source Update, CPE
+      - name: resultsPerPage
+        type: integer
+        description: Maximum results per page (max 5000).
+      - name: startIndex
+        type: integer
+        description: startIndex
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getcpes
+      description: Search CPE records
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: national-institute-of-standards-and-technology.getcpes
+      with:
+        cpeNameId: tools.cpeNameId
+        cpeMatchString: tools.cpeMatchString
+        keywordSearch: tools.keywordSearch
+        keywordExactMatch: tools.keywordExactMatch
+        lastModStartDate: tools.lastModStartDate
+        lastModEndDate: tools.lastModEndDate
+        matchCriteriaId: tools.matchCriteriaId
+        resultsPerPage: tools.resultsPerPage
+        startIndex: tools.startIndex
+      inputParameters:
+      - name: cpeNameId
+        type: string
+        description: Specific CPE record UUID.
+      - name: cpeMatchString
+        type: string
+        description: cpeMatchString
+      - name: keywordSearch
+        type: string
+        description: keywordSearch
+      - name: keywordExactMatch
+        type: boolean
+        description: keywordExactMatch
+      - name: lastModStartDate
+        type: string
+        description: lastModStartDate
+      - name: lastModEndDate
+        type: string
+        description: lastModEndDate
+      - name: matchCriteriaId
+        type: string
+        description: matchCriteriaId
+      - name: resultsPerPage
+        type: integer
+        description: Maximum results per page (default and max 10000).
+      - name: startIndex
+        type: integer
+        description: startIndex
+      outputParameters:
+      - type: object
+        mapping: $.
