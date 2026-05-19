@@ -1,0 +1,239 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: NIST National Vulnerability Database (NVD) API — CVE
+  description: 'NIST National Vulnerability Database (NVD) API — CVE. 1 operations. Lead operation: Search CVE records. Self-contained
+    Naftiko capability covering one National Institute Of Standards And Technology business surface.'
+  tags:
+  - National Institute Of Standards And Technology
+  - CVE
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    NATIONAL_INSTITUTE_OF_STANDARDS_AND_TECHNOLOGY_API_KEY: NATIONAL_INSTITUTE_OF_STANDARDS_AND_TECHNOLOGY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: national-institute-of-standards-and-technology-cve
+    baseUri: https://services.nvd.nist.gov
+    description: NIST National Vulnerability Database (NVD) API — CVE business capability. Self-contained, no shared references.
+    resources:
+    - name: rest-json-cves-2.0
+      path: /rest/json/cves/2.0
+      operations:
+      - name: getcves
+        method: GET
+        description: Search CVE records
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: cpeName
+          in: query
+          type: string
+          description: Filter by specific CPE name.
+        - name: cveId
+          in: query
+          type: string
+          description: Retrieve a specific CVE by its identifier.
+        - name: cveTag
+          in: query
+          type: string
+          description: Filter by CVE tag (disputed, unsupported-when-assigned, exclusively-hosted-service).
+        - name: cvssV2Metrics
+          in: query
+          type: string
+        - name: cvssV2Severity
+          in: query
+          type: string
+        - name: cvssV3Metrics
+          in: query
+          type: string
+        - name: cvssV3Severity
+          in: query
+          type: string
+        - name: cvssV4Metrics
+          in: query
+          type: string
+        - name: cvssV4Severity
+          in: query
+          type: string
+        - name: cweId
+          in: query
+          type: string
+          description: Filter by Common Weakness Enumeration identifier.
+        - name: hasCertAlerts
+          in: query
+          type: boolean
+        - name: hasCertNotes
+          in: query
+          type: boolean
+        - name: hasKev
+          in: query
+          type: boolean
+        - name: hasOval
+          in: query
+          type: boolean
+        - name: isVulnerable
+          in: query
+          type: boolean
+        - name: kevStartDate
+          in: query
+          type: string
+        - name: kevEndDate
+          in: query
+          type: string
+        - name: keywordSearch
+          in: query
+          type: string
+          description: Search description text for keywords.
+        - name: keywordExactMatch
+          in: query
+          type: boolean
+        - name: lastModStartDate
+          in: query
+          type: string
+          description: Last modified start date (max 120-day range).
+        - name: lastModEndDate
+          in: query
+          type: string
+        - name: pubStartDate
+          in: query
+          type: string
+          description: Published start date (max 120-day range).
+        - name: pubEndDate
+          in: query
+          type: string
+        - name: resultsPerPage
+          in: query
+          type: integer
+          description: Maximum results per page (max 2000).
+        - name: startIndex
+          in: query
+          type: integer
+          description: Zero-based pagination offset.
+        - name: sourceIdentifier
+          in: query
+          type: string
+        - name: virtualMatchString
+          in: query
+          type: string
+        - name: versionStart
+          in: query
+          type: string
+        - name: versionStartType
+          in: query
+          type: string
+        - name: versionEnd
+          in: query
+          type: string
+        - name: versionEndType
+          in: query
+          type: string
+        - name: noRejected
+          in: query
+          type: boolean
+  exposes:
+  - type: rest
+    namespace: national-institute-of-standards-and-technology-cve-rest
+    port: 8080
+    description: REST adapter for NIST National Vulnerability Database (NVD) API — CVE. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/json/cves/2-0
+      name: rest-json-cves-2-0
+      description: REST surface for rest-json-cves-2.0.
+      operations:
+      - method: GET
+        name: getcves
+        description: Search CVE records
+        call: national-institute-of-standards-and-technology-cve.getcves
+        with:
+          cpeName: rest.cpeName
+          cveId: rest.cveId
+          cveTag: rest.cveTag
+          cvssV2Metrics: rest.cvssV2Metrics
+          cvssV2Severity: rest.cvssV2Severity
+          cvssV3Metrics: rest.cvssV3Metrics
+          cvssV3Severity: rest.cvssV3Severity
+          cvssV4Metrics: rest.cvssV4Metrics
+          cvssV4Severity: rest.cvssV4Severity
+          cweId: rest.cweId
+          hasCertAlerts: rest.hasCertAlerts
+          hasCertNotes: rest.hasCertNotes
+          hasKev: rest.hasKev
+          hasOval: rest.hasOval
+          isVulnerable: rest.isVulnerable
+          kevStartDate: rest.kevStartDate
+          kevEndDate: rest.kevEndDate
+          keywordSearch: rest.keywordSearch
+          keywordExactMatch: rest.keywordExactMatch
+          lastModStartDate: rest.lastModStartDate
+          lastModEndDate: rest.lastModEndDate
+          pubStartDate: rest.pubStartDate
+          pubEndDate: rest.pubEndDate
+          resultsPerPage: rest.resultsPerPage
+          startIndex: rest.startIndex
+          sourceIdentifier: rest.sourceIdentifier
+          virtualMatchString: rest.virtualMatchString
+          versionStart: rest.versionStart
+          versionStartType: rest.versionStartType
+          versionEnd: rest.versionEnd
+          versionEndType: rest.versionEndType
+          noRejected: rest.noRejected
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: national-institute-of-standards-and-technology-cve-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for NIST National Vulnerability Database (NVD) API — CVE. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: search-cve-records
+      description: Search CVE records
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: national-institute-of-standards-and-technology-cve.getcves
+      with:
+        cpeName: tools.cpeName
+        cveId: tools.cveId
+        cveTag: tools.cveTag
+        cvssV2Metrics: tools.cvssV2Metrics
+        cvssV2Severity: tools.cvssV2Severity
+        cvssV3Metrics: tools.cvssV3Metrics
+        cvssV3Severity: tools.cvssV3Severity
+        cvssV4Metrics: tools.cvssV4Metrics
+        cvssV4Severity: tools.cvssV4Severity
+        cweId: tools.cweId
+        hasCertAlerts: tools.hasCertAlerts
+        hasCertNotes: tools.hasCertNotes
+        hasKev: tools.hasKev
+        hasOval: tools.hasOval
+        isVulnerable: tools.isVulnerable
+        kevStartDate: tools.kevStartDate
+        kevEndDate: tools.kevEndDate
+        keywordSearch: tools.keywordSearch
+        keywordExactMatch: tools.keywordExactMatch
+        lastModStartDate: tools.lastModStartDate
+        lastModEndDate: tools.lastModEndDate
+        pubStartDate: tools.pubStartDate
+        pubEndDate: tools.pubEndDate
+        resultsPerPage: tools.resultsPerPage
+        startIndex: tools.startIndex
+        sourceIdentifier: tools.sourceIdentifier
+        virtualMatchString: tools.virtualMatchString
+        versionStart: tools.versionStart
+        versionStartType: tools.versionStartType
+        versionEnd: tools.versionEnd
+        versionEndType: tools.versionEndType
+        noRejected: tools.noRejected
+      outputParameters:
+      - type: object
+        mapping: $.
