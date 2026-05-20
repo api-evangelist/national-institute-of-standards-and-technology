@@ -10,48 +10,50 @@ created: '2024-12-03'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 tags:
-- Cybersecurity
-- Federal Government
-- Standards
-- Technology
-- Vulnerabilities
-apis:
-- aid: national-institute-of-standards-and-technology:nvd-api
-  name: NIST National Vulnerability Database (NVD) API
-  tags:
-  - CVE
-  - CPE
   - Cybersecurity
+  - Federal Government
+  - Standards
+  - Technology
   - Vulnerabilities
-  humanURL: https://nvd.nist.gov/developers
-  baseURL: https://services.nvd.nist.gov
-  properties:
-  - url: https://nvd.nist.gov/developers
-    type: Documentation
-  - url: https://nvd.nist.gov/developers/vulnerabilities
-    type: Documentation
-  - url: https://nvd.nist.gov/developers/products
-    type: Documentation
-  - url: https://raw.githubusercontent.com/api-evangelist/national-institute-of-standards-and-technology/main/openapi/national-institute-of-standards-and-technology-openapi.yml
-    type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/national-institute-of-standards-and-technology-cpe.yaml
-  - type: NaftikoCapability
-    url: capabilities/national-institute-of-standards-and-technology-cve.yaml
-  - type: NaftikoCapability
-    url: capabilities/national-institute-of-standards-and-technology-cve-history.yaml
-  description: The NVD API provides programmatic access to Common Vulnerabilities and Exposures (CVE) records, CVE change
-    history, and Common Platform Enumeration (CPE) records. Endpoints support pagination, filtering by CVSS metrics, CWE IDs,
-    KEV catalog membership, source identifiers, and publication or modification date ranges.
+apis:
+  - aid: national-institute-of-standards-and-technology:nvd-api
+    name: NIST National Vulnerability Database (NVD) API
+    tags:
+    - CVE
+    - CPE
+    - Cybersecurity
+    - Vulnerabilities
+    humanURL: https://nvd.nist.gov/developers
+    baseURL: https://services.nvd.nist.gov
+    properties:
+    - url: https://nvd.nist.gov/developers
+      type: Documentation
+    - url: https://nvd.nist.gov/developers/vulnerabilities
+      type: Documentation
+    - url: https://nvd.nist.gov/developers/products
+      type: Documentation
+    - url: https://raw.githubusercontent.com/api-evangelist/national-institute-of-standards-and-technology/main/openapi/national-institute-of-standards-and-technology-openapi.yml
+      type: OpenAPI
+    - type: NaftikoCapability
+      url: capabilities/national-institute-of-standards-and-technology-cpe.yaml
+    - type: NaftikoCapability
+      url: capabilities/national-institute-of-standards-and-technology-cve.yaml
+    - type: NaftikoCapability
+      url: capabilities/national-institute-of-standards-and-technology-cve-history.yaml
+    description: The NVD API provides programmatic access to Common Vulnerabilities and Exposures (CVE) records, CVE change
+      history, and Common Platform Enumeration (CPE) records. Endpoints support pagination, filtering by CVSS metrics, CWE IDs,
+      KEV catalog membership, source identifiers, and publication or modification date ranges.
 common:
-- type: LinkedIn
-  url: https://www.linkedin.com/company/nist
-- type: Website
-  url: https://www.nist.gov/
-- type: Portal
-  url: https://nvd.nist.gov/developers
-- type: Documentation
-  url: https://nvd.nist.gov/developers/vulnerabilities
+  - type: GitHubOrganization
+    url: https://github.com/usnistgov
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/nist
+  - type: Website
+    url: https://www.nist.gov/
+  - type: Portal
+    url: https://nvd.nist.gov/developers
+  - type: Documentation
+    url: https://nvd.nist.gov/developers/vulnerabilities
 maintainers:
-- FN: Kin Lane
-  email: kin@apievangelist.com
+  - FN: Kin Lane
+    email: kin@apievangelist.com
