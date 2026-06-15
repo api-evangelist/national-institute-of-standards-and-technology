@@ -1,0 +1,689 @@
+{
+  "item": [
+    {
+      "id": "846c2d8f-7e44-48e4-8bf6-5546146a1d17",
+      "name": "CVE",
+      "description": {
+        "content": "Common Vulnerabilities and Exposures",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0236e5b7-61c3-43dc-ba79-2a46e091fcbf",
+          "name": "Search CVE records",
+          "request": {
+            "name": "Search CVE records",
+            "description": {
+              "content": "Retrieve CVE records with optional filters by CPE name, CVSS metrics, CWE ID, keyword, KEV catalog membership, source, version range, and publication or modification date ranges.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "json",
+                "cves",
+                "2.0"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cpeName",
+                  "value": "<string>",
+                  "description": "Filter by specific CPE name."
+                },
+                {
+                  "disabled": false,
+                  "key": "cveId",
+                  "value": "<string>",
+                  "description": "Retrieve a specific CVE by its identifier."
+                },
+                {
+                  "disabled": false,
+                  "key": "cveTag",
+                  "value": "<string>",
+                  "description": "Filter by CVE tag (disputed, unsupported-when-assigned, exclusively-hosted-service)."
+                },
+                {
+                  "disabled": false,
+                  "key": "cvssV2Metrics",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "cvssV2Severity",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "cvssV3Metrics",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "cvssV3Severity",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "cvssV4Metrics",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "cvssV4Severity",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "cweId",
+                  "value": "<string>",
+                  "description": "Filter by Common Weakness Enumeration identifier."
+                },
+                {
+                  "disabled": false,
+                  "key": "hasCertAlerts",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "hasCertNotes",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "hasKev",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "hasOval",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "isVulnerable",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "kevStartDate",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "kevEndDate",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "keywordSearch",
+                  "value": "<string>",
+                  "description": "Search description text for keywords."
+                },
+                {
+                  "disabled": false,
+                  "key": "keywordExactMatch",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "lastModStartDate",
+                  "value": "<dateTime>",
+                  "description": "Last modified start date (max 120-day range)."
+                },
+                {
+                  "disabled": false,
+                  "key": "lastModEndDate",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "pubStartDate",
+                  "value": "<dateTime>",
+                  "description": "Published start date (max 120-day range)."
+                },
+                {
+                  "disabled": false,
+                  "key": "pubEndDate",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "resultsPerPage",
+                  "value": "<integer>",
+                  "description": "Maximum results per page (max 2000)."
+                },
+                {
+                  "disabled": false,
+                  "key": "startIndex",
+                  "value": "<integer>",
+                  "description": "Zero-based pagination offset."
+                },
+                {
+                  "disabled": false,
+                  "key": "sourceIdentifier",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "virtualMatchString",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "versionStart",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "versionStartType",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "versionEnd",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "versionEndType",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "noRejected",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e5e57e48-f852-4e22-b424-c00350bbfbdc",
+              "name": "A paginated CVE results envelope with vulnerabilities array.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "json",
+                    "cves",
+                    "2.0"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cpeName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cveId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cveTag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cvssV2Metrics",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cvssV2Severity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cvssV3Metrics",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cvssV3Severity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cvssV4Metrics",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cvssV4Severity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cweId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hasCertAlerts",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "hasCertNotes",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "hasKev",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "hasOval",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "isVulnerable",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "kevStartDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "kevEndDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "keywordSearch",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "keywordExactMatch",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "lastModStartDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "lastModEndDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "pubStartDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "pubEndDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "resultsPerPage",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "startIndex",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "sourceIdentifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "virtualMatchString",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "versionStart",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "versionStartType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "versionEnd",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "versionEndType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "noRejected",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "08afb4e4-1dad-4e74-be0c-2509b1ca40a3",
+      "name": "CVE History",
+      "description": {
+        "content": "CVE change history events",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6a9a91e2-dda3-40a6-89aa-24037260e88f",
+          "name": "Retrieve CVE change history",
+          "request": {
+            "name": "Retrieve CVE change history",
+            "description": {
+              "content": "Retrieve change events for CVE records, optionally filtered by CVE identifier, event name, and change date range.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "json",
+                "cvehistory",
+                "2.0"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "changeStartDate",
+                  "value": "<dateTime>",
+                  "description": "Change event start date (max 120-day range)."
+                },
+                {
+                  "disabled": false,
+                  "key": "changeEndDate",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "cveId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "eventName",
+                  "value": "<string>",
+                  "description": "Filter by event type such as CVE Received, Initial Analysis, Reanalysis, CVE Modified, Modified Analysis, CVE Translated, Vendor Comment, CVE Source Update, CPE Deprecation Remap, CWE Remap, Reference Tag Update, CVE Rejected, CVE Unrejected, CVE CISA KEV Update."
+                },
+                {
+                  "disabled": false,
+                  "key": "resultsPerPage",
+                  "value": "<integer>",
+                  "description": "Maximum results per page (max 5000)."
+                },
+                {
+                  "disabled": false,
+                  "key": "startIndex",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1971db25-e1b8-4f43-a38e-bb7ecd84f331",
+              "name": "A paginated CVE change history envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "json",
+                    "cvehistory",
+                    "2.0"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "changeStartDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "changeEndDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "cveId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "eventName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "resultsPerPage",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "startIndex",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "a4b90f0f-66a8-459f-b875-489eed0c0f7b",
+      "name": "CPE",
+      "description": {
+        "content": "Common Platform Enumeration",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0e6e7fcc-45f1-4606-8f66-fbb24eaaceb5",
+          "name": "Search CPE records",
+          "request": {
+            "name": "Search CPE records",
+            "description": {
+              "content": "Retrieve Common Platform Enumeration records with optional filters by CPE Name ID, match string, keyword, modification date range, and match criteria identifier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "json",
+                "cpes",
+                "2.0"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cpeNameId",
+                  "value": "<uuid>",
+                  "description": "Specific CPE record UUID."
+                },
+                {
+                  "disabled": false,
+                  "key": "cpeMatchString",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "keywordSearch",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "keywordExactMatch",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "lastModStartDate",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "lastModEndDate",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "matchCriteriaId",
+                  "value": "<uuid>"
+                },
+                {
+                  "disabled": false,
+                  "key": "resultsPerPage",
+                  "value": "<integer>",
+                  "description": "Maximum results per page (default and max 10000)."
+                },
+                {
+                  "disabled": false,
+                  "key": "startIndex",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "67ff171b-0d0e-49f8-9464-18e7cbb46096",
+              "name": "A paginated CPE records envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "json",
+                    "cpes",
+                    "2.0"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cpeNameId",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "cpeMatchString",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "keywordSearch",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "keywordExactMatch",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "lastModStartDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "lastModEndDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "matchCriteriaId",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "resultsPerPage",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "startIndex",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://services.nvd.nist.gov",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6fdcee25-8925-4ea8-bb66-5224dbfc59ea",
+    "name": "NIST National Vulnerability Database (NVD) API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The National Vulnerability Database (NVD) API, operated by the National Institute of Standards and Technology, provides programmatic access to Common Vulnerabilities and Exposures (CVE) records, CVE change history, and Common Platform Enumeration (CPE) records. The API supports pagination, filtering, and date-range queries for vulnerability and product data.\n\nContact Support:\n Name: NIST NVD",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,322 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NIST National Vulnerability Database (NVD) API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "CVE",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search CVE records",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://services.nvd.nist.gov/rest/json/cves/2.0",
+            "params": [
+              {
+                "name": "cpeName",
+                "value": "",
+                "type": "query",
+                "description": "Filter by specific CPE name."
+              },
+              {
+                "name": "cveId",
+                "value": "",
+                "type": "query",
+                "description": "Retrieve a specific CVE by its identifier."
+              },
+              {
+                "name": "cveTag",
+                "value": "",
+                "type": "query",
+                "description": "Filter by CVE tag (disputed, unsupported-when-assigned, exclusively-hosted-service)."
+              },
+              {
+                "name": "cvssV2Metrics",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "cvssV2Severity",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "cvssV3Metrics",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "cvssV3Severity",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "cvssV4Metrics",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "cvssV4Severity",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "cweId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by Common Weakness Enumeration identifier."
+              },
+              {
+                "name": "hasCertAlerts",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "hasCertNotes",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "hasKev",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "hasOval",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "isVulnerable",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "kevStartDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "kevEndDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "keywordSearch",
+                "value": "",
+                "type": "query",
+                "description": "Search description text for keywords."
+              },
+              {
+                "name": "keywordExactMatch",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "lastModStartDate",
+                "value": "",
+                "type": "query",
+                "description": "Last modified start date (max 120-day range)."
+              },
+              {
+                "name": "lastModEndDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pubStartDate",
+                "value": "",
+                "type": "query",
+                "description": "Published start date (max 120-day range)."
+              },
+              {
+                "name": "pubEndDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "resultsPerPage",
+                "value": "",
+                "type": "query",
+                "description": "Maximum results per page (max 2000)."
+              },
+              {
+                "name": "startIndex",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based pagination offset."
+              },
+              {
+                "name": "sourceIdentifier",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "virtualMatchString",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "versionStart",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "versionStartType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "versionEnd",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "versionEndType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "noRejected",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve CVE records with optional filters by CPE name, CVSS metrics, CWE ID, keyword, KEV catalog membership, source, version range, and publication or modification date ranges."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "CVE History",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve CVE change history",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://services.nvd.nist.gov/rest/json/cvehistory/2.0",
+            "params": [
+              {
+                "name": "changeStartDate",
+                "value": "",
+                "type": "query",
+                "description": "Change event start date (max 120-day range)."
+              },
+              {
+                "name": "changeEndDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "cveId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "eventName",
+                "value": "",
+                "type": "query",
+                "description": "Filter by event type such as CVE Received, Initial Analysis, Reanalysis, CVE Modified, Modified Analysis, CVE Translated, Vendor Comment, CVE Source Update, CPE Deprecation Remap, CWE Remap, Reference Tag Update, CVE Rejected, CVE Unrejected, CVE CISA KEV Update."
+              },
+              {
+                "name": "resultsPerPage",
+                "value": "",
+                "type": "query",
+                "description": "Maximum results per page (max 5000)."
+              },
+              {
+                "name": "startIndex",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve change events for CVE records, optionally filtered by CVE identifier, event name, and change date range."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "CPE",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search CPE records",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://services.nvd.nist.gov/rest/json/cpes/2.0",
+            "params": [
+              {
+                "name": "cpeNameId",
+                "value": "",
+                "type": "query",
+                "description": "Specific CPE record UUID."
+              },
+              {
+                "name": "cpeMatchString",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "keywordSearch",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "keywordExactMatch",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "lastModStartDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "lastModEndDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "matchCriteriaId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "resultsPerPage",
+                "value": "",
+                "type": "query",
+                "description": "Maximum results per page (default and max 10000)."
+              },
+              {
+                "name": "startIndex",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve Common Platform Enumeration records with optional filters by CPE Name ID, match string, keyword, modification date range, and match criteria identifier."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
