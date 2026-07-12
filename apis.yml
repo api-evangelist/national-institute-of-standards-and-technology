@@ -42,6 +42,10 @@ apis:
       history, and Common Platform Enumeration (CPE) records. Endpoints support pagination, filtering by CVSS metrics,
       CWE IDs, KEV catalog membership, source identifiers, and publication or modification date ranges.
 common:
+  - type: VulnerabilityDisclosure
+    url: security/national-institute-of-standards-and-technology-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/national-institute-of-standards-and-technology-domain-security.yml
   - type: GitHubOrganization
     url: https://github.com/usnistgov
   - type: LinkedIn
@@ -52,6 +56,8 @@ common:
     url: https://nvd.nist.gov/developers
   - type: Documentation
     url: https://nvd.nist.gov/developers/vulnerabilities
+  - type: Blog
+    url: https://www.nist.gov/news-events/news/rss.xml
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
