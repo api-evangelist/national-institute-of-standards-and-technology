@@ -42,6 +42,8 @@ apis:
       history, and Common Platform Enumeration (CPE) records. Endpoints support pagination, filtering by CVSS metrics,
       CWE IDs, KEV catalog membership, source identifiers, and publication or modification date ranges.
 common:
+  - type: AgenticAccess
+    url: agentic-access/national-institute-of-standards-and-technology-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/national-institute-of-standards-and-technology-vulnerability-disclosure.yml
   - type: DomainSecurity
