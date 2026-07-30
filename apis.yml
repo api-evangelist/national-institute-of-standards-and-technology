@@ -5,7 +5,19 @@ description: >-
   technology in ways that enhance economic security and improve our quality of life. NIST operates the National
   Vulnerability Database (NVD), which provides public APIs for CVE, CVE change history, and CPE records.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Freemium
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/national-institute-of-standards-and-technology.png
 url: >-
   https://raw.githubusercontent.com/api-evangelist/national-institute-of-standards-and-technology/refs/heads/main/apis.yml
 created: '2024-12-03'
@@ -18,29 +30,57 @@ tags:
   - Technology
   - Vulnerabilities
 apis:
-  - aid: national-institute-of-standards-and-technology:nvd-api
-    name: NIST National Vulnerability Database (NVD) API
-    tags:
-      - CVE
-      - CPE
-      - Cybersecurity
-      - Vulnerabilities
-    humanURL: https://nvd.nist.gov/developers
-    baseURL: https://services.nvd.nist.gov
-    properties:
-      - url: https://nvd.nist.gov/developers
-        type: Documentation
-      - url: https://nvd.nist.gov/developers/vulnerabilities
-        type: Documentation
-      - url: https://nvd.nist.gov/developers/products
-        type: Documentation
-      - url: >-
-          https://raw.githubusercontent.com/api-evangelist/national-institute-of-standards-and-technology/main/openapi/national-institute-of-standards-and-technology-openapi.yml
-        type: OpenAPI
-    description: >-
-      The NVD API provides programmatic access to Common Vulnerabilities and Exposures (CVE) records, CVE change
-      history, and Common Platform Enumeration (CPE) records. Endpoints support pagination, filtering by CVSS metrics,
-      CWE IDs, KEV catalog membership, source identifiers, and publication or modification date ranges.
+- aid: >-
+    national-institute-of-standards-and-technology:national-institute-of-standards-and-technology-cpe-api
+  name: National Institute of Standards and Technology CPE API
+  description: Common Platform Enumeration
+  humanURL: https://nvd.nist.gov/developers
+  baseURL: https://services.nvd.nist.gov
+  tags:
+  - CPE
+  properties:
+  - type: OpenAPI
+    url: openapi/national-institute-of-standards-and-technology-cpe-api-openapi.yml
+  - type: Documentation
+    url: https://nvd.nist.gov/developers
+  - type: Documentation
+    url: https://nvd.nist.gov/developers/vulnerabilities
+  - type: Documentation
+    url: https://nvd.nist.gov/developers/products
+- aid: >-
+    national-institute-of-standards-and-technology:national-institute-of-standards-and-technology-cve-api
+  name: National Institute of Standards and Technology CVE API
+  description: Common Vulnerabilities and Exposures
+  humanURL: https://nvd.nist.gov/developers
+  baseURL: https://services.nvd.nist.gov
+  tags:
+  - CVE
+  properties:
+  - type: OpenAPI
+    url: openapi/national-institute-of-standards-and-technology-cve-api-openapi.yml
+  - type: Documentation
+    url: https://nvd.nist.gov/developers
+  - type: Documentation
+    url: https://nvd.nist.gov/developers/vulnerabilities
+  - type: Documentation
+    url: https://nvd.nist.gov/developers/products
+- aid: >-
+    national-institute-of-standards-and-technology:national-institute-of-standards-and-technology-cve-history-api
+  name: National Institute of Standards and Technology CVE History API
+  description: CVE change history events
+  humanURL: https://nvd.nist.gov/developers
+  baseURL: https://services.nvd.nist.gov
+  tags:
+  - CVE History
+  properties:
+  - type: OpenAPI
+    url: openapi/national-institute-of-standards-and-technology-cve-history-api-openapi.yml
+  - type: Documentation
+    url: https://nvd.nist.gov/developers
+  - type: Documentation
+    url: https://nvd.nist.gov/developers/vulnerabilities
+  - type: Documentation
+    url: https://nvd.nist.gov/developers/products
 common:
   - type: AgenticAccess
     url: agentic-access/national-institute-of-standards-and-technology-agentic-access.yml
