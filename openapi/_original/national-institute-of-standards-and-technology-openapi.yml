@@ -1,0 +1,223 @@
+openapi: 3.0.3
+info:
+  title: NIST National Vulnerability Database (NVD) API
+  description: >-
+    The National Vulnerability Database (NVD) API, operated by the National
+    Institute of Standards and Technology, provides programmatic access to
+    Common Vulnerabilities and Exposures (CVE) records, CVE change history,
+    and Common Platform Enumeration (CPE) records. The API supports
+    pagination, filtering, and date-range queries for vulnerability and
+    product data.
+  version: "2.0.0"
+  contact:
+    name: NIST NVD
+    url: https://nvd.nist.gov/developers
+servers:
+  - url: https://services.nvd.nist.gov
+    description: NVD production services
+tags:
+  - name: CVE
+    description: Common Vulnerabilities and Exposures
+  - name: CVE History
+    description: CVE change history events
+  - name: CPE
+    description: Common Platform Enumeration
+paths:
+  /rest/json/cves/2.0:
+    get:
+      tags: [CVE]
+      summary: Search CVE records
+      description: >-
+        Retrieve CVE records with optional filters by CPE name, CVSS metrics,
+        CWE ID, keyword, KEV catalog membership, source, version range, and
+        publication or modification date ranges.
+      operationId: getCves
+      parameters:
+        - name: cpeName
+          in: query
+          description: Filter by specific CPE name.
+          schema: { type: string }
+        - name: cveId
+          in: query
+          description: Retrieve a specific CVE by its identifier.
+          schema: { type: string }
+        - name: cveTag
+          in: query
+          description: Filter by CVE tag (disputed, unsupported-when-assigned, exclusively-hosted-service).
+          schema: { type: string }
+        - name: cvssV2Metrics
+          in: query
+          schema: { type: string }
+        - name: cvssV2Severity
+          in: query
+          schema: { type: string, enum: [LOW, MEDIUM, HIGH] }
+        - name: cvssV3Metrics
+          in: query
+          schema: { type: string }
+        - name: cvssV3Severity
+          in: query
+          schema: { type: string, enum: [LOW, MEDIUM, HIGH, CRITICAL] }
+        - name: cvssV4Metrics
+          in: query
+          schema: { type: string }
+        - name: cvssV4Severity
+          in: query
+          schema: { type: string, enum: [LOW, MEDIUM, HIGH, CRITICAL] }
+        - name: cweId
+          in: query
+          description: Filter by Common Weakness Enumeration identifier.
+          schema: { type: string }
+        - name: hasCertAlerts
+          in: query
+          schema: { type: boolean }
+        - name: hasCertNotes
+          in: query
+          schema: { type: boolean }
+        - name: hasKev
+          in: query
+          schema: { type: boolean }
+        - name: hasOval
+          in: query
+          schema: { type: boolean }
+        - name: isVulnerable
+          in: query
+          schema: { type: boolean }
+        - name: kevStartDate
+          in: query
+          schema: { type: string, format: date-time }
+        - name: kevEndDate
+          in: query
+          schema: { type: string, format: date-time }
+        - name: keywordSearch
+          in: query
+          description: Search description text for keywords.
+          schema: { type: string }
+        - name: keywordExactMatch
+          in: query
+          schema: { type: boolean }
+        - name: lastModStartDate
+          in: query
+          description: Last modified start date (max 120-day range).
+          schema: { type: string, format: date-time }
+        - name: lastModEndDate
+          in: query
+          schema: { type: string, format: date-time }
+        - name: pubStartDate
+          in: query
+          description: Published start date (max 120-day range).
+          schema: { type: string, format: date-time }
+        - name: pubEndDate
+          in: query
+          schema: { type: string, format: date-time }
+        - name: resultsPerPage
+          in: query
+          description: Maximum results per page (max 2000).
+          schema: { type: integer, maximum: 2000 }
+        - name: startIndex
+          in: query
+          description: Zero-based pagination offset.
+          schema: { type: integer }
+        - name: sourceIdentifier
+          in: query
+          schema: { type: string }
+        - name: virtualMatchString
+          in: query
+          schema: { type: string }
+        - name: versionStart
+          in: query
+          schema: { type: string }
+        - name: versionStartType
+          in: query
+          schema: { type: string, enum: [including, excluding] }
+        - name: versionEnd
+          in: query
+          schema: { type: string }
+        - name: versionEndType
+          in: query
+          schema: { type: string, enum: [including, excluding] }
+        - name: noRejected
+          in: query
+          schema: { type: boolean }
+      responses:
+        '200':
+          description: A paginated CVE results envelope with vulnerabilities array.
+  /rest/json/cvehistory/2.0:
+    get:
+      tags: [CVE History]
+      summary: Retrieve CVE change history
+      description: >-
+        Retrieve change events for CVE records, optionally filtered by CVE
+        identifier, event name, and change date range.
+      operationId: getCveHistory
+      parameters:
+        - name: changeStartDate
+          in: query
+          description: Change event start date (max 120-day range).
+          schema: { type: string, format: date-time }
+        - name: changeEndDate
+          in: query
+          schema: { type: string, format: date-time }
+        - name: cveId
+          in: query
+          schema: { type: string }
+        - name: eventName
+          in: query
+          description: >-
+            Filter by event type such as CVE Received, Initial Analysis,
+            Reanalysis, CVE Modified, Modified Analysis, CVE Translated,
+            Vendor Comment, CVE Source Update, CPE Deprecation Remap,
+            CWE Remap, Reference Tag Update, CVE Rejected, CVE Unrejected,
+            CVE CISA KEV Update.
+          schema: { type: string }
+        - name: resultsPerPage
+          in: query
+          description: Maximum results per page (max 5000).
+          schema: { type: integer, maximum: 5000 }
+        - name: startIndex
+          in: query
+          schema: { type: integer }
+      responses:
+        '200':
+          description: A paginated CVE change history envelope.
+  /rest/json/cpes/2.0:
+    get:
+      tags: [CPE]
+      summary: Search CPE records
+      description: >-
+        Retrieve Common Platform Enumeration records with optional filters
+        by CPE Name ID, match string, keyword, modification date range,
+        and match criteria identifier.
+      operationId: getCpes
+      parameters:
+        - name: cpeNameId
+          in: query
+          description: Specific CPE record UUID.
+          schema: { type: string, format: uuid }
+        - name: cpeMatchString
+          in: query
+          schema: { type: string }
+        - name: keywordSearch
+          in: query
+          schema: { type: string }
+        - name: keywordExactMatch
+          in: query
+          schema: { type: boolean }
+        - name: lastModStartDate
+          in: query
+          schema: { type: string, format: date-time }
+        - name: lastModEndDate
+          in: query
+          schema: { type: string, format: date-time }
+        - name: matchCriteriaId
+          in: query
+          schema: { type: string, format: uuid }
+        - name: resultsPerPage
+          in: query
+          description: Maximum results per page (default and max 10000).
+          schema: { type: integer, maximum: 10000 }
+        - name: startIndex
+          in: query
+          schema: { type: integer }
+      responses:
+        '200':
+          description: A paginated CPE records envelope.
