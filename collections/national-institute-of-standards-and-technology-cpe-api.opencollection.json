@@ -1,0 +1,78 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NIST National Vulnerability Database (NVD) CPE API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "CPE",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search CPE records",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://services.nvd.nist.gov/rest/json/cpes/2.0",
+            "params": [
+              {
+                "name": "cpeNameId",
+                "value": "",
+                "type": "query",
+                "description": "Specific CPE record UUID."
+              },
+              {
+                "name": "cpeMatchString",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "keywordSearch",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "keywordExactMatch",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "lastModStartDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "lastModEndDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "matchCriteriaId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "resultsPerPage",
+                "value": "",
+                "type": "query",
+                "description": "Maximum results per page (default and max 10000)."
+              },
+              {
+                "name": "startIndex",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve Common Platform Enumeration records with optional filters by CPE Name ID, match string, keyword, modification date range, and match criteria identifier."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

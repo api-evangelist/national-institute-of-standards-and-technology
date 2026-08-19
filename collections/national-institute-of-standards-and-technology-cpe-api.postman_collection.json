@@ -1,0 +1,181 @@
+{
+  "item": [
+    {
+      "id": "7f997288-7eba-4912-bd1d-e9a97177533d",
+      "name": "CPE",
+      "description": {
+        "content": "Common Platform Enumeration",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6a40b41e-a007-4138-bdc6-c5b1892e391b",
+          "name": "Search CPE records",
+          "request": {
+            "name": "Search CPE records",
+            "description": {
+              "content": "Retrieve Common Platform Enumeration records with optional filters by CPE Name ID, match string, keyword, modification date range, and match criteria identifier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "json",
+                "cpes",
+                "2.0"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cpeNameId",
+                  "value": "<uuid>",
+                  "description": "Specific CPE record UUID."
+                },
+                {
+                  "disabled": false,
+                  "key": "cpeMatchString",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "keywordSearch",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "keywordExactMatch",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "lastModStartDate",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "lastModEndDate",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "matchCriteriaId",
+                  "value": "<uuid>"
+                },
+                {
+                  "disabled": false,
+                  "key": "resultsPerPage",
+                  "value": "<integer>",
+                  "description": "Maximum results per page (default and max 10000)."
+                },
+                {
+                  "disabled": false,
+                  "key": "startIndex",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "07bb6d47-f64e-4e7d-8b54-bdb0d4681999",
+              "name": "A paginated CPE records envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "json",
+                    "cpes",
+                    "2.0"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cpeNameId",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "cpeMatchString",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "keywordSearch",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "keywordExactMatch",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "lastModStartDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "lastModEndDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "matchCriteriaId",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "resultsPerPage",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "startIndex",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://services.nvd.nist.gov",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d0e00a73-5858-42aa-bec2-31f0a9eaa567",
+    "name": "NIST National Vulnerability Database (NVD) CPE API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The National Vulnerability Database (NVD) API, operated by the National Institute of Standards and Technology, provides programmatic access to Common Vulnerabilities and Exposures (CVE) records, CVE change history, and Common Platform Enumeration (CPE) records. The API supports pagination, filtering, and date-range queries for vulnerability and product data.\n\nContact Support:\n Name: NIST NVD",
+      "type": "text/plain"
+    }
+  }
+}
