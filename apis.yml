@@ -5,6 +5,17 @@ description: >-
   technology in ways that enhance economic security and improve our quality of life. NIST operates the National
   Vulnerability Database (NVD), which provides public APIs for CVE, CVE change history, and CPE records.
 type: Index
+deliveryModel:
+  model: unknown
+  open_source: false
+  commercial: false
+  callable_host: true
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: unknown
