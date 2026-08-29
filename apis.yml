@@ -99,6 +99,9 @@ apis:
   - type: Documentation
     url: https://nvd.nist.gov/developers/products
 common:
+  - type: CapabilityMap
+    url: capabilities/national-institute-of-standards-and-technology-capability-edges.yml
+    name: National Institute of Standards and Technology Business Capability Map
   - type: AgenticAccess
     url: agentic-access/national-institute-of-standards-and-technology-agentic-access.yml
   - type: VulnerabilityDisclosure

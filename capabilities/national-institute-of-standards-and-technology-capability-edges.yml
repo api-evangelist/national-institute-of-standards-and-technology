@@ -1,0 +1,34 @@
+slug: national-institute-of-standards-and-technology
+provider: National Institute of Standards and Technology
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Public Sector & Government
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: CVE
+  spec_file: national-institute-of-standards-and-technology-cve-api-openapi.yml
+  capability_id: BC-620.40
+  capability_id_l1: BC-620
+  capability_name: Vulnerability Management
+  confidence: 0.9
+  evidence: getCves Search CVE records — "programmatic access to Common Vulnerabilities and Exposures
+    (CVE) records"
+  reason: The operation searches published vulnerability records from the National Vulnerability Database,
+    which is the canonical feed for vulnerability identification and remediation prioritisation.
+- tag: CVE History
+  spec_file: national-institute-of-standards-and-technology-cve-history-api-openapi.yml
+  capability_id: BC-620.40
+  capability_id_l1: BC-620
+  capability_name: Vulnerability Management
+  confidence: 0.8
+  evidence: getCveHistory Retrieve CVE change history
+  reason: Change history of CVE vulnerability records — still vulnerability data consumption, supporting
+    vulnerability management; slightly thinner because it is a change-feed variant of the CVE surface.
