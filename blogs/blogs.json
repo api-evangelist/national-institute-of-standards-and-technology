@@ -2,23 +2,21 @@
   "repo": "national-institute-of-standards-and-technology",
   "feeds": [
     {
-      "source": "https://www.nist.gov/news-events/news/rss.xml",
-      "feed_url": "https://www.nist.gov/news-events/news/rss.xml",
-      "title": "",
-      "saved": 0,
-      "method": "feed",
-      "nature": "vendor-blog",
-      "nature_basis": "path_blog"
-    },
-    {
       "source": "https://nvd.nist.gov/developers/vulnerabilities",
       "feed_url": "https://nvd.nist.gov/developers/vulnerabilities",
       "title": "",
       "saved": 0,
       "method": "none"
+    },
+    {
+      "source": "https://www.nist.gov/news-events/news/rss.xml",
+      "feed_url": "https://www.nist.gov/news-events/news/rss.xml",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
     }
   ],
-  "fetched": "2026-08-30T22:33:40Z",
+  "fetched": "2026-09-06T19:17:18Z",
   "post_count": 49,
   "feed_nature": "vendor-blog",
   "feed_nature_basis": "path_blog",
